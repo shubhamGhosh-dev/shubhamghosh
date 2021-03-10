@@ -8,6 +8,7 @@
   box-sizing: inherit; }
 
 html {
+  scroll-behavior: smooth;
   box-sizing: border-box;
   font-size: 62.5%; }
 
@@ -57,6 +58,12 @@ body {
   .header__nav {
     margin: 0 auto;
     display: block; }
+  .header__dummy-space {
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 0px;
+    transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
   .header__list {
     position: fixed;
     left: 50%;
@@ -88,6 +95,8 @@ body {
     color: white;
     text-decoration: none;
     transition: all 0.2s; }
+  .header__nav-btn {
+    visibility: hidden; }
 
 .intro-box {
   height: 100vh;
@@ -297,7 +306,7 @@ body {
     height: 50rem;
     width: 50rem;
     border-radius: 50%;
-    background-image: linear-gradient(to left bottom, #6b8582, #14e6b6);
+    background-image: linear-gradient(to left bottom, #3dbeaf, #14e6b6);
     z-index: 1; }
   .skill-background::after {
     content: "";
@@ -403,16 +412,51 @@ body {
   .description {
     width: auto;
     text-align: center; }
+  .header__list {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 0;
+    font-size: 1.5rem;
+    transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
+  .header__list--active {
+    height: 30rem; }
+  .header__item {
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+    display: block; }
   .header__link {
-    padding: 1.5rem 2rem; } }
+    display: block;
+    width: 100%;
+    padding: 1rem 3rem; }
+  .header__nav-btn {
+    display: inline-block;
+    padding: 1rem;
+    background-color: #ffdb56;
+    width: 8rem;
+    height: 5rem;
+    text-align: center;
+    z-index: 1000;
+    position: fixed;
+    visibility: visible;
+    top: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
+  .header__nav-btn--active {
+    transform: translateX(-50%) rotate(180deg);
+    transform-origin: center center;
+    position: fixed;
+    top: 29rem; }
+  .header__dummy-space--active {
+    height: 10rem;
+    z-index: -1;
+    transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1); } }
 
 @media (max-width: 520px) {
   .glide__arrows {
     display: none; } }
-
-@media (max-width: 450px) {
-  .header__link {
-    padding: 1.5rem 1.5rem; } }
 
 @media (max-width: 420px) {
   .card {
@@ -420,7 +464,3 @@ body {
     margin: 5rem auto; }
   .glide__slide:hover {
     transform: none; } }
-
-@media (max-width: 375px) {
-  .header__nav {
-    display: none; } }
